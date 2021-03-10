@@ -128,4 +128,62 @@
     
 4. Проверьте, что ветка ```patch1``` доступна в удалёный репозитории.
 
-  Команда:
+---
+
+5. Создайте pull-request ```patch1 -> master```.
+
+---
+
+6. В локальной копии в ветке ```patch1``` добавьте в исходный код комментарии.
+
+  Команда: ```$ vim hello_world.cpp```
+  
+  Код:
+  ```
+  #include <iostream>
+  #include <string>
+
+  int main ()
+  { 
+     std::string name; //Имя
+     std::cout << "Input your name: ";
+     std::cin >> name;
+     std::cout << "Hello world from " << name;
+     return 0;
+  }
+  ```
+  
+7. **commit**, **push**.
+
+   Команды: 
+   ```
+   $ git commit -m"added comment" -a
+   $ git push origin patch1 <<<<<<< HEAD
+   ```
+   
+8. Проверьте, что новые изменения есть в созданном на **шаге 5** pull-request.
+
+---
+
+9. В удалённый репозитории выполните слияние ```PR patch1 -> master``` и удалите ветку patch1 в удаленном репозитории.
+
+---
+
+10. Локально выполните pull.
+
+  Команда: ```$ git pull origin master```
+  
+11. С помощью команды ```git log``` просмотрите историю в локальной версии ветки ```master```.
+
+  Команда: ```$ git log```
+  
+  Вывод:
+  ```
+  commit cc260faee61518b7034d1a81c08d0545b2cb3d79 (HEAD -> patch1)
+  Author: dgt20u186 <dalgatovgitinomd@gmail.com>
+  Date:   Wed Mar 10 23:19:21 2021 +0300
+
+      added comment
+  ```
+  
+12. 
