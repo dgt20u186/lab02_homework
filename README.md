@@ -223,10 +223,35 @@
 
    Команды:
    ```
-   git commit -m"style=Mozilla" -a
-   git push origin patch2
+   $ git commit -m"style=Mozilla" -a
+   $ git push origin patch2
    ```
   
 4. В ветке **master** в удаленном репозитории измените комментарии, например, расставьте знаки препинания, переведите комментарии на другой язык.
 
-   Команды: 
+   ---
+   
+5. Убедитесь, что в pull-request появились *конфликты*.
+
+   ---
+
+6. Для этого локально выполните **pull** + **rebase** (точную последовательность команд, следует узнать самостоятельно). **Исправьте конфликты**.
+
+   Команды:
+   ```
+   $ git checkout master
+   $ git rebase master
+   $ git checkout patch2
+   $ git merge patch2
+
+7. Сделайте *force push* в ветку ```patch2```.
+
+   Команда: ```$ git push --force origin patch2```
+   
+8. Убедитель, что в pull-request пропали конфликтны.
+
+   ---
+   
+9. Вмержите pull-request ```patch2 -> master```.
+
+   ---
