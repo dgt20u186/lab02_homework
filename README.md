@@ -2,6 +2,7 @@
 ## Далгатов Гитиномагомед, группа ИУ8-22
 ### Part 1
 1. Создайте пустой репозиторий на сервисе github.com (или gitlab.com, или bitbucket.com)(он создан, назывется lab02_homework).
+   Это тот репозиторий, на котором мы сейчас находимся.
 2. Выполните инструкцию по созданию первого коммита на странице репозитория, созданного на предыдещем шаге.
   
    Команды: 
@@ -221,12 +222,20 @@
    
 3. **commit**, **push**, создайте pull-request ```patch2 -> master```.
 
-   Команды:
+   Команда 1: ```$ git commit -m"style=Mozilla" -a```
+   
+   Вывод:
    ```
-   $ git commit -m"style=Mozilla" -a
-   $ git push origin patch2
+   [patch2 ea2870abb] style=Mozilla
+   28 files changed, 8 insertions(+), 8 deletions(-)
+   rewrite .cache/mozilla/firefox/q9deefwq.default-release/cache2/entries/75C7FF8070DB4ACC8CD59ED913D3BA7AC142E365 (76%)
+   rewrite .cache/mozilla/firefox/q9deefwq.default-release/cache2/entries/83A9BA25821651DD88B149D6716D674DB354070A (82%)
+   rewrite .cache/mozilla/firefox/q9deefwq.default-release/cache2/entries/FF4FA6D964A9B855A994A2D7E5FCA61ABD42FA09 (78%)
+   rewrite .mozilla/firefox/q9deefwq.default-release/datareporting/aborted-session-ping (85%)
    ```
-  
+   
+   Команда 2: ```$ git push origin patch2```
+   
 4. В ветке **master** в удаленном репозитории измените комментарии, например, расставьте знаки препинания, переведите комментарии на другой язык.
 
    ---
