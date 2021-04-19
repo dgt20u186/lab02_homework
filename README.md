@@ -7,65 +7,78 @@
   
    Команды: 
    ```
-   $ vim README.md
+   $ echo "# lab02_homework" >> README.md
+   $ git init
    $ git add README.md
-   $ git commit -m"Start doing DZ"
-   $ git push origin master
+   $ git branch -M main
+   $ git remote add origin https://github.com/navckin/lab02new.git
+   $ git push -u origin main
    ```
   
 3. Создайте файл ```hello_world.cpp``` в локальной копии репозитория (который должен был появиться на шаге 2). Реализуйте программу **Hello world** на языке C++ используя плохой стиль кода. Например, после заголовочных файлов вставьте строку ```using namespace std;```
   
-   Команда:  ```$ vim hello_world.cpp```
-   Код: ```#include using namespace std; int main (){ cout << "Hello world\n"; }```
+   Команда:  ```$ nano hello_world.cpp```
+   Код: 
+   ```
+   #include <iostream>
+
+   using namespace std;
+
+   int main() 
+   { 
+      cout << "Hello world!" << endl;
+      return 1; 
+   }
+   ```
   
 4. Добавьте этот файл в локальную копию репозитория.
 
-   Команда: ```$ git add hellow_world.cpp```
+   Команда: ```$ git add hello_world.cpp```
   
 5. Закоммитьте изменения с *осмысленным* сообщением.
 
-   Команда: ```$ git commit -m "added hello_world.cpp"```
+   Команда: ```git commit -m"Added file .cpp"```
      
    Вывод:
    ```
-   [patch1 ee9b3761f] added hello_world.cpp
-   1 file changed, 1 insertion(+), 14 deletions(-)
+   [main f1a06cb61] Added file .cpp
+   1 file changed, 5 insertions(+), 4 deletions(-)
    ```
   
 6. Изменитьте исходный код так, чтобы программа через стандартный поток ввода запрашивалось имя пользователя. А в стандартный поток вывода печаталось сообщение ```Hello world from @name```, где ```@name``` имя пользователя.
 
-   Команда: ```$ vim hello_world.cpp```
+   Команда: ```$ nano hello_world.cpp```
   
    Код: 
    ```
    #include <iostream>
    #include <string>
- 
-   int main ()
+   
+   using namespace std;
+
+   int main()
    { 
-       std::string name;
-       std::cout << "Input your name: ";
-       std::cin >> name;
-       std::cout << "Hello world from " << name;
-       return 0;
+      string name;
+      cin >> name;
+      cout << "Hello World from << name << endl;
+      return 0;
    }
    ```
    
 7. Закоммитьте новую версию программы. Почему не надо добавлять файл повторно ```git add```?
 
-   Команда: ```$ git commit -m"upgrade hello_w0rld.cpp" -a```
+   Команда: ```$ git commit -a -m "upgrade hello_world.cpp"```
   
    Вывод(фрагмент):
    ```
-   [patch1 5225767aa] upgrade hello_w0rld.cpp
-   3228 files changed, 2320 insertions(+), 677663 deletions(-)
-   rewrite .cache/gstreamer-1.0/registry.x86_64.bin (67%)
+   ewrite snap/snap-store/common/.cache/gnome-software/fwupd/remotes.d/lvfs/metadata.xml.gz (91%)
+   rewrite snap/snap-store/common/.cache/gnome-software/fwupd/remotes.d/lvfs/metadata.xml.gz.asc (86%)
    ```
    Мы не используем ```git add``` второй раз, поскольку ```hello_world.cpp``` уже добавлен, однако для коммита теперь нужно использовать оператор ```-a```.
   
 8. Запуште изменения в удалёный репозиторий.
 
-   Команда: ```$ git push origin master```
+   Команда: ```$ git push origin main```
   
 9. Проверьте, что история коммитов доступна в удалёный репозитории.
 
@@ -73,30 +86,22 @@
   
    Вывод:
    ```
-   commit 5225767aad97828da68c11f4571f8ab434291941 (HEAD -> patch1)
    Author: dgt20u186 <dalgatovgitinomd@gmail.com>
-   Date:   Wed Mar 10 22:49:44 2021 +0300
+   Date:   Mon Apr 19 21:26:22 2021 +0300
 
-       upgrade hello_w0rld.cpp
+    upgrade hello_world.cpp
 
-   commit ee9b3761ffb1d254154a9a4b9208824ed5b8501e
+   commit f1a06cb616ff301689c99a58717fb3087527c4cb
    Author: dgt20u186 <dalgatovgitinomd@gmail.com>
-   Date:   Wed Mar 10 22:38:35 2021 +0300
- 
-       added hello_world.cpp
+   Date:   Mon Apr 19 21:16:29 2021 +0300
 
-   commit 13da1ec111ddfb9f1c79749c00a7b570a8d5d46a
+    Added file .cpp
+
+   commit 9a04cd984a93ff0fa86956d27681c642d6bc445a
    Author: dgt20u186 <dalgatovgitinomd@gmail.com>
-   Date:   Tue Mar 9 10:47:15 2021 +0300
+   Date:   Mon Apr 19 21:05:47 2021 +0300
 
-       delete 'using namespace std;'.
-
-   commit edb4a61faaf3d1a3fc2a87c942d4ec96edd24f1b (master)
-   Author: dgt20u186 <dalgatovgitinomd@gmail.com>
-   Date:   Mon Mar 8 12:17:56 2021 +0300
-
-       added hello_world.cpp.
-   :
+    first commit
    ```
   
 ### Part 2
@@ -104,8 +109,7 @@
 
    Команды: 
    ```
-   $ git branch patch1
-   $ git checkout patch1
+   $ git checkout -b patch1
    ```
    
    Вывод(фрагмент):
@@ -116,14 +120,13 @@
    ```
   
 2. Внесите изменения в ветке ```patch1``` по исправлению кода и избавления от ```using namespace std;```.
-
-   Команда: ```$ vim hello_world.cpp```
-  
 3. **commit**, **push** локальную ветку в удалённый репозиторий.
 
    Команды: 
    ```
-   $ git commit -m"upgrage hello_world.cpp and added RM" -a
+   $ nano hello_world.cpp
+   $ git add hello_world.cpp
+   $ $ git commit -m"Changed the mistakes: added std::"
    $ git push origin patch1
    ```
     
